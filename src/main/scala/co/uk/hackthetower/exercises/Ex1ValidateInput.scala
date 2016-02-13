@@ -57,16 +57,19 @@ object Ex1ValidateInput {
   }
 
   private def buildReact(params: Map[String, String]): Option[React] = {
-        for {
-          generation <- params.get("generation")
-          name <- params.get("name")
-          time <- params.get("time")
-          view <- params.get("view")
-          energy <- params.get("energy")
-          master <- params.get("master")
-          collision <- params.get("collision")
-          slaves <- params.get("slaves")
-        } yield React(generation, name, time.toInt, view, energy, Some(master.toInt, master.toInt), Some(collision.toInt, collision.toInt), slaves.toInt, Map[String, String]())
+    //    for {
+    //      generation <- params.get("generation")
+    //      name <- params.get("name")
+    //      time <- params.get("time")
+    //      view <- params.get("view")
+    //      energy <- params.get("energy")
+    //      master <- params.get("master")
+    //      collision <- params.get("collision")
+    //      slaves <- params.get("slaves")
+    //    } yield React(
+    //      generation, name, time.toInt, view, energy, Some(master.toInt, master.toInt), Some(collision.toInt, collision.toInt), slaves.toInt, Map[String, String]()
+    //    )
+    Some(React(0, "string", 10, "__W_", "12", None, None, 10, Map()))
   }
 
   def buildGoodbye(params: Map[String, String]): Option[Goodbye] = {
