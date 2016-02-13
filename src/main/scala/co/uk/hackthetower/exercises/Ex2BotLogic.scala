@@ -1,8 +1,10 @@
 package co.uk.hackthetower.exercises
 
 import cats.data.Xor
-import co.uk.hackthetower.commands.bot.BotCommands
+import co.uk.hackthetower.commands.bot.{Spawn, Move, BotCommands}
 import co.uk.hackthetower.commands.server.ServerCommand
+
+import scala.util.Random
 
 /**
   * Second exercise: Implement method 'processServerCommand'
@@ -29,5 +31,21 @@ import co.uk.hackthetower.commands.server.ServerCommand
   */
 object Ex2BotLogic {
 
-  def processServerCommand(command: Xor[String, ServerCommand]): Xor[String, List[BotCommands]] = Xor.left("Not sure what to do")
+  def processServerCommand(command: Xor[String, ServerCommand]): Xor[String, List[BotCommands]] = {
+    Xor.Right(
+      List(
+        Move(randomMove(), randomMove()),
+        Move(randomMove(), randomMove()),
+        Move(randomMove(), randomMove()),
+        Spawn((randomMove(), randomMove()), "DIEEEE", 10, Map())
+      )
+    )
+  }
+
+  def randomMove(): Int = {
+    val random = new Random().nextInt()
+    if (random == 0) random
+    else if (random < 0) -1
+    else 1
+  }
 }
