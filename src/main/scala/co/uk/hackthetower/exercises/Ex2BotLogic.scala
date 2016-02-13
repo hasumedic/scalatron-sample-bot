@@ -34,10 +34,7 @@ object Ex2BotLogic {
   def processServerCommand(command: Xor[String, ServerCommand]): Xor[String, List[BotCommands]] = {
     Xor.Right(
       List(
-        Move(randomMove(), randomMove()),
-        Move(randomMove(), randomMove()),
-        Move(randomMove(), randomMove()),
-        Spawn((randomMove(), randomMove()), "DIEEEE", 10, Map())
+        Move(randomMove(), randomMove())
       )
     )
   }
