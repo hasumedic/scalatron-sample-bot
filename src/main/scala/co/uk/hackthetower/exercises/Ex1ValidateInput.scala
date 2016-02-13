@@ -62,8 +62,8 @@ object Ex1ValidateInput {
       time <- params.get("time")
       view <- params.get("view")
       energy <- params.get("energy")
-      master <- params.get("master")
-      collision <- params.get("collision")
+      master <- params.getOrElse("master", 0)
+      collision <- params.getOrElse("collision", 0)
       slaves <- params.get("slaves")
     } yield React(
       Integer.parseInt(generation), name, Integer.parseInt(time), view, energy, (Integer.parseInt(master), Integer.parseInt(master)), (Integer.parseInt(collision), Integer.parseInt(collision)), Integer.parseInt(slaves), Map[String, String]()
