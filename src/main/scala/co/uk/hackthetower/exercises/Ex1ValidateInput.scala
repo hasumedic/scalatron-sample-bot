@@ -31,6 +31,7 @@ object Ex1ValidateInput {
     * @return a ValidatedNel[String, ServerCommand], equivalent to Validated[NonEmptyList[String], ServerCommand]
     */
   def parseInput(input: String): ValidatedNel[String, ServerCommand] = {
+    println(input)
     val (operation, params) = ServerCommandParser(input)
     val serverCommand = buildServerCommand(operation, params)
     if (serverCommand.isDefined) valid(serverCommand.get)
