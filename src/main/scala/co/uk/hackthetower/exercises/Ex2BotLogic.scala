@@ -43,9 +43,6 @@ object Ex2BotLogic {
   }
 
   def randomMove(): Int = {
-    val random = new Random().nextInt()
-    if (random == 0) random
-    else if (random < 0) -1
-    else 1
+    new Random().nextInt(3) - 1
   }
 }

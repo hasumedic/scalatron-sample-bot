@@ -32,28 +32,18 @@ class Ex1ValidateInputSpec extends FlatSpec with Matchers {
     Ex1ValidateInput.parseInput(input).isInvalid should be(true)
   }
 
-//  it should "recognise other server commands like Welcome" in {
-//    val input = "Welcome(player,10,0,5)"
-//    Ex1ValidateInput.parseInput(input).isValid should be (true)
-//  }
-//
-//  it should "recognise other server commands like React" in {
-//    val input = "React(1,player,2,________M_______,500)"
-//    Ex1ValidateInput.parseInput(input).isValid should be (true)
-//  }
-//
-//  it should "return Invalid if 'Welcome' server command send illegal arguments" in {
-//    val input = "Welcome(1,player,hello,world)"
-//    Ex1ValidateInput.parseInput(input).isInvalid should be (true)
-//  }
-//
-//  it should "return Invalid if 'React' server command send illegal arguments" in {
-//    val input = "React(player,1,string,44,something)"
-//    Ex1ValidateInput.parseInput(input).isInvalid should be (true)
-//  }
-//
-//  it should "return Invalid if 'Goodbye' server command send illegal arguments" in {
-//    val input = "Goodbye(player)"
-//    Ex1ValidateInput.parseInput(input).isInvalid should be (true)
-//  }
+  it should "recognise other server commands like Welcome" in {
+    val input = "Welcome(name=player,apocalypse=10,round=0,maxslaves=5)"
+    Ex1ValidateInput.parseInput(input).isValid should be (true)
+  }
+
+  it should "recognise 'Welcome' when parameters are out of order" in {
+    val input = "Welcome(apocalypse=1,name=player,maxslaves=13,round=6)"
+    Ex1ValidateInput.parseInput(input).isValid should be (true)
+  }
+
+  it should "return Invalid if 'Goodbye' server command send illegal arguments" in {
+    val input = "Goodbye(name=player)"
+    Ex1ValidateInput.parseInput(input).isInvalid should be (true)
+  }
 }
